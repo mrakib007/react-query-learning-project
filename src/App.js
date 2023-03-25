@@ -1,39 +1,35 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Link, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import HomePage from './components/HomePage'
+import Main from './components/Layout/Main'
 import RQSuperHeroesPage from './components/RQSuperHeroesPage'
 import SuperHeroesPage from './components/SuperHeroesPage'
 
 function App() {
+ const router = createBrowserRouter([{
+  path: '/',
+  element: <Main></Main>,
+  children: [
+    {
+      path: '/',
+      element: <HomePage></HomePage>
+    },
+    {
+      path: '/rq-super-heroes',
+      element: <SuperHeroesPage></SuperHeroesPage>
+    },
+    {
+      path: '/',
+      element: <RQSuperHeroesPage></RQSuperHeroesPage>
+    }
+  ]
+ }
+ ])
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/super-heroes'>Traditional Super Heroes</Link>
-            </li>
-            <li>
-              <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path='/super-heroes'>
-            <SuperHeroesPage />
-          </Route>
-          <Route path='/rq-super-heroes'>
-            <RQSuperHeroesPage />
-          </Route>
-          <Route path='/'>
-            <HomePage />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <RouterProvider router={router}></RouterProvider>
+    </div>
+    
   )
 }
 
