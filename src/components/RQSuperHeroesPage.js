@@ -11,7 +11,9 @@ const RQSuperHeroesPage = () => {
         isError,
         error,
         isFetching} = useQuery('super-heroes',fetchSuperHeroes,{
-            cacheTime: 5000,
+            // cacheTime: 5000,
+            // staleTime: 30000,
+            staleTime: 0
         })
 
     if(isLoading){
