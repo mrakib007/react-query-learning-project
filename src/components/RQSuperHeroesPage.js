@@ -13,7 +13,15 @@ const RQSuperHeroesPage = () => {
         isFetching} = useQuery('super-heroes',fetchSuperHeroes,{
             // cacheTime: 5000,
             // staleTime: 30000,
-            staleTime: 0
+            // staleTime: 0,
+            // refetchOnMount: true,
+            // refetchOnMount: false,
+            // refetchOnMount: 'always',
+            // refetchOnWindowFocus: true, //always updates data whenever it is changed. 
+            //it can also be set as 'always' and false.
+            // refetchInterval: false, default value  
+            refetchInterval: 2000, //data will automatically being fetched after every 2 seconds
+            refetchIntervalInBackground: true, // data will be fetched in the background even when the browser is not in progress. 
         })
 
     if(isLoading){
