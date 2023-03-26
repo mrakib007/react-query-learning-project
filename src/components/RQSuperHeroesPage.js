@@ -35,6 +35,12 @@ const RQSuperHeroesPage = () => {
             // enabled: false, //data fetching is disabled by this and it will be enabled with user event.
             onSuccess: onSuccess, //callbacks used as a side effect
             onError: onError, //callbacks used as a side effects
+            select: (data) => {
+                // select receives data as an argument
+                const superHeroNames = data?.data?.map(hero => hero.name)
+                console.log(superHeroNames) //map function returns an array
+                return superHeroNames;
+            },
         })
 
     if(isLoading || isFetching){
@@ -48,9 +54,15 @@ const RQSuperHeroesPage = () => {
         <div>
             <h2>RQSuper Hero</h2>
             <button onClick={refetch}>Fetch Heroes</button>
-            {
+            {/* {
                 data?.data.map(hero =>{
                     return <div key={hero.name}>{hero.name}</div>
+                })
+            } */}
+
+            {
+                data?.map(heroName =>{
+                    return <div key={{heroName}}>{heroName}</div>
                 })
             }
         </div>
