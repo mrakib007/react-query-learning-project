@@ -19,6 +19,9 @@ const NavBar = () => {
           {/* <li>
             <Link to="/test">Test</Link>
           </li> */}
+          <li>
+            <Link to="/rq-parallel">Parallel Queries</Link>
+          </li>
         </ul>
       </nav>
     </div>
