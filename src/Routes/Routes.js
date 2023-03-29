@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import DynamicParallel from "../components/DynamicParallel";
 import HomePage from "../components/HomePage";
 import Main from "../components/Layout/Main";
+import ParallelQueries from "../components/ParallelQueries";
 import RQSuperHero from "../components/RQSuperHero";
 import RQSuperHeroesPage from "../components/RQSuperHeroesPage";
 import SuperHeroesPage from "../components/SuperHeroesPage";
-import ParallelQueries from "../hoooks/ParallelQueries";
+
 // import Test from "../components/Test";
 
 const router = createBrowserRouter([{
@@ -34,7 +36,11 @@ const router = createBrowserRouter([{
       {
         path: '/rq-parallel',
         element: <ParallelQueries></ParallelQueries>
-      }
+      },
+      {
+        path: '/rq-dynamic-parallel',
+        element: <DynamicParallel heroIds={[1,3]}></DynamicParallel>
+      },
     ]
    }
    ])

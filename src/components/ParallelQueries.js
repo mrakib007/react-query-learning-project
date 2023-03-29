@@ -8,6 +8,10 @@ const fetchSuperHeroes = () =>{
 const fetchFriends = () =>{
     return axios.get('http://localhost:4000/friends');
 }
+
+//this type of manual queries are not sufficient while fetching dynamic queries.
+//So another way is shown in DynamicParallel component
+
 const ParallelQueries = () => {
     const {data: superHeroes} = useQuery('super-heroes',fetchSuperHeroes);
     const {data: friends} = useQuery('friends',fetchFriends);
