@@ -25,7 +25,7 @@ const DynamicParallel = ({ heroIds }) => {
 
         {
             queryResults?.map((result)=>{
-                return <div key={result?.data?.data?.id}>{result?.data?.data?.name}</div>
+                return <div key={result?.data?.data?.id}>{result?.data?.data?.name},{result?.data?.data?.alterEgo}</div>
             })
         }
       </div>

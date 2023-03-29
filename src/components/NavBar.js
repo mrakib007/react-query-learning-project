@@ -23,7 +23,10 @@ const NavBar = () => {
             <Link to="/rq-parallel">Parallel Queries</Link>
           </li>
           <li>
-            <Link to="/rq-dynamic-parallel">Parallel Queries</Link>
+            <Link to="/rq-dynamic-parallel">Dynamic Parallel Queries</Link>
+          </li>
+          <li>
+            <Link to="/rq-dependent">Dependent Queries</Link>
           </li>
         </ul>
       </nav>

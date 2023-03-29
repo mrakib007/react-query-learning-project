@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import DependentQueries from "../components/DependentQueries";
 import DynamicParallel from "../components/DynamicParallel";
 import HomePage from "../components/HomePage";
 import Main from "../components/Layout/Main";
@@ -41,6 +42,10 @@ const router = createBrowserRouter([{
         path: '/rq-dynamic-parallel',
         element: <DynamicParallel heroIds={[1,3]}></DynamicParallel>
       },
+      {
+        path: '/rq-dependent',
+        element: <DependentQueries email='rakib@example.com'></DependentQueries>
+      }
     ]
    }
    ])
