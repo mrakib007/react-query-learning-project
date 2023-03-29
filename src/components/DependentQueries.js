@@ -10,9 +10,9 @@ const fetchCoursesByChannelId = (channelId) =>{
 }
 const DependentQueries = ({email}) => {
     //here one query depends with another
-    const {data: user,isLoading,isFetching,error,isError} = useQuery(['user',email],() => fetchUserByEmail(email))
+    const {data: user} = useQuery(['user',email],() => fetchUserByEmail(email))
     const channelId = user?.data?.channelId;
-    const {data: courses} = useQuery(['courses',channelId],()=> fetchCoursesByChannelId(channelId),{
+    const {data: courses,isLoading,isFetching,error,isError} = useQuery(['courses',channelId],()=> fetchCoursesByChannelId(channelId),{
         enabled: !!channelId,
     })
      if (isLoading || isFetching) {
@@ -26,6 +26,7 @@ const DependentQueries = ({email}) => {
     return (
         <div>
             <h2>{courses?.data.id} has these courses</h2>
+            <h3>The email id is: {email}</h3>
             {
                 courses?.data?.courses.map(course =>{
                     return <div key={course}><p>
