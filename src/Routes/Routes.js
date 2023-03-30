@@ -3,6 +3,7 @@ import DependentQueries from "../components/DependentQueries";
 import DynamicParallel from "../components/DynamicParallel";
 import HomePage from "../components/HomePage";
 import Main from "../components/Layout/Main";
+import PaginatedQueries from "../components/PaginatedQueries";
 import ParallelQueries from "../components/ParallelQueries";
 import RQSuperHero from "../components/RQSuperHero";
 import RQSuperHeroesPage from "../components/RQSuperHeroesPage";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([{
       {
         path: '/rq-dependent',
         element: <DependentQueries email='rakib@example.com'></DependentQueries>
+      },
+      {
+        path: '/rq-paginated',
+        element: <PaginatedQueries></PaginatedQueries>
       }
     ]
    }

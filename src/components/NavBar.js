@@ -28,6 +28,9 @@ const NavBar = () => {
           <li>
             <Link to="/rq-dependent">Dependent Queries</Link>
           </li>
+          <li>
+            <Link to="/rq-paginated">Paginated Queries</Link>
+          </li>
         </ul>
       </nav>
     </div>
