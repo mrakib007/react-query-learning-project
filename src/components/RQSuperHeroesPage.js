@@ -1,14 +1,24 @@
 // import axios from 'axios';
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 // import { useQuery } from "react-query";
-import { useSuperHeroesData } from "../hoooks/useSuperHeroesData";
+import { useAddSuperHeroData, useSuperHeroesData } from "../hoooks/useSuperHeroesData";
 
 // const fetchSuperHeroes = () =>{
 //     return axios.get('http://localhost:4000/superheroes')
 // }
 const RQSuperHeroesPage = () => {
+  const [name,setName] = useState('');
+  const [alterEgo,setAlterEgo] = useState('');
+
+  //mutate is needed to be called for post request
+  const {mutate:addHero,isLoading:loading,isError:hasError,error:Error} = useAddSuperHeroData()
+  const handleAddHeroClick = () =>{
+    console.log({name,alterEgo});
+    const hero = {name,alterEgo};
+    addHero(hero);
+  }
   const onSuccess = (data) => {
     //react query can pass the data or the error that is encountered while fetching in this callbacks. So we can pass that in the form of a parameter in the function.
     toast.success("Perform side effect after data fetching");
@@ -50,7 +60,15 @@ const RQSuperHeroesPage = () => {
   //The Custom Hook is here
   const { isLoading, data, isError, error, isFetching, refetch } =
     useSuperHeroesData(onSuccess, onError);
-
+  
+  if(loading){
+    return <h2>Loading inside useMutation</h2>
+  } 
+  if(hasError){
+    return <h2>This error is inside useMutation hook and the error is 
+      {Error.message}
+    </h2>
+  } 
   if (isLoading || isFetching) {
     return <h1>Loading...</h1>;
   }
@@ -61,6 +79,15 @@ const RQSuperHeroesPage = () => {
   return (
     <div>
       <h2>RQSuper Hero</h2>
+      <div>
+        <input type="text"
+         value={name} 
+         onChange={(e)=>setName(e.target.value)}/>
+        <input type="text"
+         value={alterEgo} 
+         onChange={(e)=>setAlterEgo(e.target.value)} id="" />
+         <button onClick={handleAddHeroClick}>Add Hero</button>
+      </div>
       <button onClick={refetch}>Fetch Heroes</button>
       {data?.data.map((hero) => {
         return <div key={hero.id}>
