@@ -19,6 +19,11 @@
       "name": "Flash",
       "alterEgo": "Barry Allen",
       "id": 4
+    },
+    {
+      "name": "Mardok",
+      "alterEgo": "daredevil",
+      "id": 5
     }
   ],
   "friends": [
