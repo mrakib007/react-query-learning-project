@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DependentQueries from "../components/DependentQueries";
 import DynamicParallel from "../components/DynamicParallel";
 import HomePage from "../components/HomePage";
+import InfiniteQueries from "../components/InfiniteQueries";
 import Main from "../components/Layout/Main";
 import PaginatedQueries from "../components/PaginatedQueries";
 import ParallelQueries from "../components/ParallelQueries";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([{
       {
         path: '/rq-paginated',
         element: <PaginatedQueries></PaginatedQueries>
+      },
+      {
+        path: '/rq-infinite',
+        element: <InfiniteQueries></InfiniteQueries>
       }
     ]
    }

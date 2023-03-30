@@ -11,25 +11,28 @@ const NavBar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/super-heroes">Traditional Super Heroes</Link>
+            <Link to="/super-heroes">TraditionalSuperHeroes</Link>
           </li>
           <li>
-            <Link to="/rq-super-heroes">RQ Super Heroes</Link>
+            <Link to="/rq-super-heroes">RQSuperHeroes</Link>
           </li>
           {/* <li>
             <Link to="/test">Test</Link>
           </li> */}
           <li>
-            <Link to="/rq-parallel">Parallel Queries</Link>
+            <Link to="/rq-parallel">ParallelQueries</Link>
           </li>
           <li>
-            <Link to="/rq-dynamic-parallel">Dynamic Parallel Queries</Link>
+            <Link to="/rq-dynamic-parallel">DynamicParallelQueries</Link>
           </li>
           <li>
-            <Link to="/rq-dependent">Dependent Queries</Link>
+            <Link to="/rq-dependent">DependentQueries</Link>
           </li>
           <li>
-            <Link to="/rq-paginated">Paginated Queries</Link>
+            <Link to="/rq-paginated">PaginatedQueries</Link>
+          </li>
+          <li>
+            <Link to="/rq-infinite">InfiniteQueries</Link>
           </li>
         </ul>
       </nav>
