@@ -24,15 +24,15 @@ export const useAddSuperHeroData = () =>{
     //for posting data to the json database
     const queryClient = useQueryClient();
     return useMutation(addSuperHero,{
-        onSuccess: (data) =>{
-            //here data refers to the entire response to the post request
-            queryClient.setQueryData('super-heroes',(oldQueryData)=>{
-                //oldQueryData refers what is present in the query cache
-                return {
-                    ...oldQueryData,
-                    data: [...oldQueryData.data,data.data] //data.data refers the hero object of the mutation response
-                }
-            }) //this function is used for updating the query cache
+        // onSuccess: (data) =>{
+        //     //here data refers to the entire response to the post request
+        //     queryClient.setQueryData('super-heroes',(oldQueryData)=>{
+        //         //oldQueryData refers what is present in the query cache
+        //         return {
+        //             ...oldQueryData,
+        //             data: [...oldQueryData.data,data.data] //data.data refers the hero object of the mutation response
+        //         }
+        //     }) //this function is used for updating the query cache
 
             //this is for invalidateQueries
             //with this, without any fetching button click, the
@@ -44,6 +44,29 @@ export const useAddSuperHeroData = () =>{
             //with this invalidateQueries there will be an additional network request
             //but it returns an object containing the same data we are getting by that request.
             //so there is a room for improvement
+        // },
+
+       // callbacks for optimistic mutation
+       //there are three callbacks for optimistic mutation
+       //optimistic updates means updating the state before performing a mutation under assumption that nothing can go wrong
+        onMutate: async (newHero) =>{
+            await queryClient.cancelQueries('super-heroes');
+            const previousHeroData = queryClient.getQueryData('super-heroes');
+            queryClient.setQueryData('super-heroes',(oldQueryData)=>{
+                return {
+                    ...oldQueryData,
+                    data: [...oldQueryData.data,{id: oldQueryData?.data.length+1,...newHero}],
+                }
+            })
+            return{
+                previousHeroData,
+            }
+        },
+        onError: (error,heroName,context) =>{
+            queryClient.setQueryData('super-heroes',context.previousHeroData)
+        },
+        onSettled: () =>{
+            queryClient.invalidateQueries('super-heroes')
         },
     });
 }
